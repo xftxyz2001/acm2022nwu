@@ -12,6 +12,6 @@ for i in range(len(dp)):
     father_idx = d.get(i, -1)
     if father_idx != -1:
         dp[i] = max(dp[i], dp[father_idx]+dp[i])
-        if current_max<dp[i]:
+        if current_max < dp[i]:
             current_max = dp[i]
 print(current_max)

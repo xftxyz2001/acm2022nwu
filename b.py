@@ -12,11 +12,11 @@ for i in range(k):
         break
     index = xiyin.index(current_max)
     result.append(index+1)
-    xiyin[index] = xiyin[index] - int(xiyin[index] /2 +0.5)
-    day +=1
+    xiyin[index] = xiyin[index] - int(xiyin[index] / 2 + 0.5)
+    day += 1
 print(day)
 for i in range(day):
-    print(result[i], end = "")
+    print(result[i], end="")
     if i < day - 1:
-        print(" ", end = "")
+        print(" ", end="")
 print()

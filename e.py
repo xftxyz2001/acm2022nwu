@@ -18,8 +18,3 @@ def hs(begin, end, num):
         else:
             right = mid + 1
     return -mid - 1
-
-
-    
-
-    

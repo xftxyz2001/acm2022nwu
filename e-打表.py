@@ -1,16 +1,19 @@
 import math
+
 prime_dict = {}
 
 
-def isPrime(n):
-    if n in prime_dict:
-        return prime_dict[n]
-    for i in range(2, int(math.sqrt(n) + 1)):
-        if n % i == 0:
-            prime_dict[n] = False
+def is_prime(number):
+    if number > 1:
+        if number == 2:
+            return True
+        if number % 2 == 0:
             return False
-    prime_dict[n] = True
-    return True
+        for current in range(3, int(math.sqrt(number) + 1), 2):
+            if number % current == 0:
+                return False
+        return True
+    return False
 
 
 def factor(n):
@@ -24,16 +27,19 @@ def factor(n):
 
 
 def check(n):
-    for i in factor(n):
-        if not isPrime(i + n / i):
+    check_list = [i + n / i for i in factor(n)]
+    for i in check_list:
+        if i in prime_dict:
+            return prime_dict[i]
+        if not is_prime(i):
+            prime_dict[i] = False
             return False
+    prime_dict[i] = True
     return True
 
 
-res = []
-for i in range(1, 10**7 + 1):
-    if check(i):
-        res.append(i)
-f = open('w.txt', 'w')
-f.write(str(res))
-f.close()
+with open('w.txt', 'w') as f:
+    for i in range(1, 10**7+1):
+        if check(i):
+            print(i)
+            f.write(str(i) + ',')
